@@ -26,9 +26,9 @@ public class UserDao {
             )
     );
 
-    public UserDetails findUserByEmail(String email){
+    public UserDetails findUserByUsername(String username){
         return APPLICATION_USER
-                .stream().filter(s->s.getUsername().equals(email))
+                .stream().filter(s->s.getUsername().equals(username))
                 .findFirst()
                 .orElseThrow(()->new UsernameNotFoundException("No user was found"));
     }
