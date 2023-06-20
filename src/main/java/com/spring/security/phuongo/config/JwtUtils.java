@@ -7,7 +7,6 @@ import org.springframework.stereotype.Component;
 import io.jsonwebtoken.Claims;
 
 import java.util.Date;
-import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
 import java.util.function.Function;
@@ -38,10 +37,6 @@ public class JwtUtils {
     }
 
     public String generateToken(UserDetails userDetails, Map<String, Object> claims) {
-        return createToken(userDetails, claims);
-    }
-
-    private String createToken(UserDetails userDetails, Map<String, Object> claims) {
 
         return Jwts.builder().setClaims(claims)
                 .setSubject(userDetails.getUsername())

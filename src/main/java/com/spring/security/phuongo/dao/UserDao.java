@@ -13,20 +13,19 @@ import java.util.List;
 @Repository
 public class UserDao {
 
-    private final static List<UserDetails> APPLICATION_USER = Arrays.asList(
-            new User(
-                    "phuongothe@gmail.com",
-                    "password",
-                    Collections.singleton(new SimpleGrantedAuthority("ROLE_ADMIN"))
-            ),
-            new User(
-                    "user@gmail.com",
-                    "password",
-                    Collections.singleton(new SimpleGrantedAuthority("ROLE_USER"))
-            )
-    );
-
     public UserDetails findUserByUsername(String username){
+        List<UserDetails> APPLICATION_USER = Arrays.asList(
+                new User(
+                        "phuongothe@gmail.com",
+                        "password",
+                        Collections.singleton(new SimpleGrantedAuthority("ROLE_ADMIN"))
+                ),
+                new User(
+                        "user@gmail.com",
+                        "password",
+                        Collections.singleton(new SimpleGrantedAuthority("ROLE_USER"))
+                )
+        );
         return APPLICATION_USER
                 .stream().filter(s->s.getUsername().equals(username))
                 .findFirst()
